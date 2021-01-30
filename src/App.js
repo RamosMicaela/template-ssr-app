@@ -1,6 +1,10 @@
 import React from 'react';
 import Home from './Home';
 
-export default () => {
-  return <Home name="Mica" />;
+export default (props) => {
+  return (
+    <>
+      <Home name={props.name} />
+    </>
+    );
 };

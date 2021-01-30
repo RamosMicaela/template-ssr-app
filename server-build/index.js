@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./middlewares/get-data/index.js":
+/*!***************************************!*\
+  !*** ./middlewares/get-data/index.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _services_example__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/example */ \"./services/example.js\");\n\n\nconst getDataMiddleware = (req, res, next) => {\n  _services_example__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getExample();\n  next();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (getDataMiddleware);\n\n//# sourceURL=webpack:///./middlewares/get-data/index.js?");
+
+/***/ }),
+
 /***/ "./middlewares/render/index.js":
 /*!*************************************!*\
   !*** ./middlewares/render/index.js ***!
@@ -94,7 +106,19 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! path */ \"path\");\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fs */ \"fs\");\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _src_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../src/App */ \"./src/App.js\");\n\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ((req, res, _) => {\n  const app = react_dom_server__WEBPACK_IMPORTED_MODULE_3___default.a.renderToString( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_src_App__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null));\n  const indexFile = path__WEBPACK_IMPORTED_MODULE_0___default.a.resolve('./build/index.html');\n  fs__WEBPACK_IMPORTED_MODULE_1___default.a.readFile(indexFile, 'utf8', (err, data) => {\n    if (err) {\n      console.error('Something went wrong:', err);\n      return res.status(500).send('Oops, better luck next time!');\n    }\n\n    return res.send(data.replace('<div id=\"root\"></div>', `<div id=\"root\">${app}</div>`));\n  });\n});\n\n//# sourceURL=webpack:///./middlewares/render/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _src_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../src/App */ \"./src/App.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ((req, res, _) => {\n  res.send(react_dom_server__WEBPACK_IMPORTED_MODULE_1___default.a.renderToString( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_App__WEBPACK_IMPORTED_MODULE_2__[\"default\"], res.locals)));\n});\n\n//# sourceURL=webpack:///./middlewares/render/index.js?");
+
+/***/ }),
+
+/***/ "./middlewares/set-name/index.js":
+/*!***************************************!*\
+  !*** ./middlewares/set-name/index.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst setNameToShow = (req, res, next) => {\n  res.locals = {\n    name: 'Tintin'\n  };\n  next();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (setNameToShow);\n\n//# sourceURL=webpack:///./middlewares/set-name/index.js?");
 
 /***/ }),
 
@@ -106,7 +130,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var path
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _middlewares_render_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../middlewares/render/index.js */ \"./middlewares/render/index.js\");\n\n\nconst PORT = process.env.PORT || 3006;\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\napp.get('/', _middlewares_render_index_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\napp.use(express__WEBPACK_IMPORTED_MODULE_0___default.a.static('./build'));\napp.listen(PORT, () => {\n  console.log(`Server is listening on port ${PORT}`);\n});\n\n//# sourceURL=webpack:///./server/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _middlewares_render_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../middlewares/render/index.js */ \"./middlewares/render/index.js\");\n/* harmony import */ var _middlewares_set_name_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../middlewares/set-name/index.js */ \"./middlewares/set-name/index.js\");\n/* harmony import */ var _middlewares_get_data_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../middlewares/get-data/index.js */ \"./middlewares/get-data/index.js\");\n\n\n\n\nconst PORT = process.env.PORT || 3006;\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\napp.get('/', _middlewares_set_name_index_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"], _middlewares_render_index_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\napp.get('/page', _middlewares_render_index_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\napp.use(express__WEBPACK_IMPORTED_MODULE_0___default.a.static('./build'));\napp.listen(PORT, () => {\n  console.log(`Server is listening on port ${PORT}`);\n});\n\n//# sourceURL=webpack:///./server/index.js?");
+
+/***/ }),
+
+/***/ "./services/example.js":
+/*!*****************************!*\
+  !*** ./services/example.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar Client = __webpack_require__(/*! node-rest-client */ \"node-rest-client\").Client;\n\nvar client = new Client();\n\nclass ExampleClient {\n  static getExample() {\n    client.get(\"http://remote.site/rest/xml/method\", function (data, response) {\n      // parsed response body as js object\n      console.log(data); // raw response\n\n      console.log(response);\n    });\n  }\n\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ExampleClient);\n\n//# sourceURL=webpack:///./services/example.js?");
 
 /***/ }),
 
@@ -118,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var expr
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home */ \"./src/Home.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (() => {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Home__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n    name: \"Mica\"\n  });\n});\n\n//# sourceURL=webpack:///./src/App.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home */ \"./src/Home.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (props => {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Home__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n    name: props.name\n  }));\n});\n\n//# sourceURL=webpack:///./src/App.js?");
 
 /***/ }),
 
@@ -145,25 +181,14 @@ eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///externa
 
 /***/ }),
 
-/***/ "fs":
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
+/***/ "node-rest-client":
+/*!***********************************!*\
+  !*** external "node-rest-client" ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = require(\"fs\");\n\n//# sourceURL=webpack:///external_%22fs%22?");
-
-/***/ }),
-
-/***/ "path":
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"path\");\n\n//# sourceURL=webpack:///external_%22path%22?");
+eval("module.exports = require(\"node-rest-client\");\n\n//# sourceURL=webpack:///external_%22node-rest-client%22?");
 
 /***/ }),
 

@@ -1,11 +1,13 @@
 import express from 'express';
 
 import render from '../middlewares/render/index.js';
+import setNameToShow from '../middlewares/set-name/index.js';
 
 const PORT = process.env.PORT || 3006;
 const app = express();
 
-app.get('/', render);
+app.get('/', setNameToShow, render);
+app.get('/page', render);
 
 app.use(express.static('./build'));
 
